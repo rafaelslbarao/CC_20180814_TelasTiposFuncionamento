@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CC_20180814_TelasTiposFuncionamento</string>
+    <string name="testeToast">Teste de Toast</string>
 </resources>
