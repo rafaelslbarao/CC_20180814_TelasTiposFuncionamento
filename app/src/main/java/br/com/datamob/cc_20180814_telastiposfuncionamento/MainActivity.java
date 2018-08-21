@@ -2,6 +2,7 @@ package br.com.datamob.cc_20180814_telastiposfuncionamento;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -22,7 +23,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        inicializaComponentes();
+        startActivity(new Intent(context, PrimeiraActivity.class));
+//        inicializaComponentes();
     }
 
     private void inicializaComponentes()
@@ -58,10 +60,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void executaTesteToast()
     {
-//        Toast.makeText(this, "Teste do botão (Toast)", Toast.LENGTH_LONG).show();
-//        Toast.makeText(this, R.string.testeToast, Toast.LENGTH_LONG).show();
-//        Toast.makeText(this, getString(R.string.testeToast), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Teste do botão (Toast)", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, R.string.testeToast, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, getString(R.string.testeToast), Toast.LENGTH_SHORT).show();
+    }
 
+    private void executaTesteToastCustomizado()
+    {
         Toast toast = new Toast(this);
         toast.setView(getLayoutInflater().inflate(R.layout.activity_main, null));
         toast.setDuration(Toast.LENGTH_LONG);
@@ -109,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(DialogInterface dialog, int which)
             {
-                avisaQueEstaBem();
+                avisaQueEstaBemToast();
             }
         });
         builder.setNeutralButton("Nem sei", new DialogInterface.OnClickListener()
@@ -125,12 +130,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(DialogInterface dialog, int which)
             {
-                correEAvisaQueTaMal();
+                correEAvisaQueTaMalToast();
             }
         });
+    }
+
+    private void executaTesteDialogCustomizado()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
-        //
         builder = new AlertDialog.Builder(context);
         View view = getLayoutInflater().inflate(R.layout.activity_main, null);
         builder.setView(view);
@@ -150,12 +159,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    private void correEAvisaQueTaMal()
+    private void correEAvisaQueTaMalToast()
     {
         Toast.makeText(this, "Ele tá morrendo", Toast.LENGTH_LONG).show();
     }
 
-    private void avisaQueEstaBem()
+    private void avisaQueEstaBemToast()
     {
         Toast.makeText(this, "Continua que ta TOP", Toast.LENGTH_LONG).show();
     }
