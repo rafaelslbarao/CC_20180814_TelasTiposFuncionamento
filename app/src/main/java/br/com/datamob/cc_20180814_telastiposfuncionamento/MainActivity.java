@@ -23,6 +23,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        findViewById(android.R.id.content).setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(context, PrimeiraActivity.class));
+            }
+        });
         startActivity(new Intent(context, PrimeiraActivity.class));
 //        inicializaComponentes();
     }
